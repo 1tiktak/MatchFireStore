@@ -10,9 +10,17 @@ import UIKit
 
 class CardView: UIView {
     
-     let imageView  = UIImageView(image:#imageLiteral(resourceName: "lady5c.jpg") )
+    var cardViewModel: CardViewModel! {
+        didSet {
+            imageView.image = UIImage(named: cardViewModel.imageName)
+            informationLabel.attributedText = cardViewModel.attributedString
+            informationLabel.textAlignment = cardViewModel.textAlignment
+        }
+    }
     
-    let informationLabel = UILabel()
+    // Encapsulation
+    fileprivate let imageView  = UIImageView(image:#imageLiteral(resourceName: "lady5c.jpg") )
+    fileprivate let informationLabel = UILabel()
     
     //Configuationd
     fileprivate let threshold: CGFloat = 100
@@ -20,6 +28,7 @@ class CardView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         // custom drawing code.
         layer.cornerRadius = 10
         clipsToBounds = true

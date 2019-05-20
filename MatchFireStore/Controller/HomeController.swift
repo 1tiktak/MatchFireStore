@@ -22,11 +22,20 @@ class HomeController: UIViewController {
 //    ]
     
     
-    let cardViewModels = [
+    let cardViewModels: [CardViewModel] = {
         
-        User(name: "Adriel", age: 24, profession: "Marketing", imageName: "lady5c").toCardViewModel(),
-        User(name: "Thomas", age: 18, profession: "Intern", imageName: "Thomas").toCardViewModel()
-]
+        let producers = [
+            
+            User(name: "Adriel", age: 24, profession: "Marketing", imageName: "lady5c"),
+            User(name: "Thomas", age: 18, profession: "Intern", imageName: "Thomas"),
+            
+            Advertiser(title: "Slide out menu", brandName: "Wright the code", posterPhotoName: "advertising_sample")
+        ] as [ProducesCardViewModel]
+        
+        let viewModels = producers.map({return $0.toCardViewModel()})
+        return viewModels
+        
+}()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,30 +52,12 @@ class HomeController: UIViewController {
         
         cardViewModels.forEach { (cardVM) in
             let cardView = CardView(frame: .zero)
-            cardView.imageView.image = UIImage(named: cardVM.imageName)
-            cardView.informationLabel.attributedText = cardVM.attributedString
-            cardView.informationLabel.textAlignment = cardVM.textAlignment
+            
+            cardView.cardViewModel = cardVM
             
             cardsDeckView.addSubview(cardView)
             cardView.fillSuperview()
         }
-//        users.forEach { (user) in
-//            let cardView = CardView(frame: .zero)
-//            cardView.imageView.image = UIImage(named: user.imageName)
-//            cardView.informationLabel.text = "\(user.name)\(user.age)\n\(user.profession)"
-//
-//            let attributedText = NSMutableAttributedString(string: user.name, attributes: [.font: UIFont.systemFont(ofSize: 32, weight: .heavy)])
-//            attributedText.append(NSAttributedString(string: "  \(user.age)", attributes: [.font: UIFont.systemFont(ofSize: 24, weight: .regular)]))
-//            attributedText.append(NSAttributedString(string: "\n\(user.profession)", attributes: [.font: UIFont.systemFont(ofSize: 20, weight: .regular)]))
-//
-//
-//
-//            cardView.informationLabel.attributedText = attributedText
-//            cardsDeckView.addSubview(cardView)
-//            cardView.fillSuperview()
-//
-//        }
-        
     }
 
     // MARK: - FilePrivate
