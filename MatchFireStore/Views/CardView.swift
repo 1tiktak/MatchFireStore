@@ -20,15 +20,27 @@ class CardView: UIView {
     
     // Encapsulation
     fileprivate let imageView  = UIImageView(image:#imageLiteral(resourceName: "lady5c.jpg") )
+    fileprivate let gradientLayer = CAGradientLayer()
     fileprivate let informationLabel = UILabel()
+    
+
     
     //Configuationd
     fileprivate let threshold: CGFloat = 100
 
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupLayout()
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        addGestureRecognizer(panGesture)
+    }
+    
+    
+    
+    fileprivate func setupLayout() {
         // custom drawing code.
         layer.cornerRadius = 10
         clipsToBounds = true
@@ -37,22 +49,37 @@ class CardView: UIView {
         addSubview(imageView)
         imageView.fillSuperview()
         
+        // Add a gradient layer.
+        
+        setupGradientLayer()
+        
         addSubview(informationLabel)
         informationLabel.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 16, bottom: 16, right: 16))
         
-        informationLabel.text = "Test Name Test Name AGE"
         informationLabel.textColor = .white
-        informationLabel.font = .systemFont(ofSize: 34, weight: .heavy)
         informationLabel.numberOfLines = 0
+    }
+
+    
+    fileprivate func setupGradientLayer() {
         
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        addGestureRecognizer(panGesture)
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradientLayer.locations = [0.5,1.1]
+        layer.addSublayer(gradientLayer)
+    }
+    
+    override func layoutSubviews() {
+        
+        gradientLayer.frame = self.frame
     }
     
     @objc fileprivate func handlePan(gesture: UIPanGestureRecognizer) {
         // rotation
         // Some not to scary math here to convert the radions
         switch gesture.state {
+        case .began: superview?.subviews.forEach({ (subview) in
+            subview.layer.removeAllAnimations()
+        })
         case .changed:
             handleChanged(gesture)
         case .ended:

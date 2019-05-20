@@ -29,7 +29,7 @@ class HomeController: UIViewController {
             User(name: "Adriel", age: 24, profession: "Marketing", imageName: "lady5c"),
             User(name: "Thomas", age: 18, profession: "Intern", imageName: "Thomas"),
             
-            Advertiser(title: "Slide out menu", brandName: "Wright the code", posterPhotoName: "advertising_sample")
+            Advertiser(title: "GrubHub", brandName: "Hungry Yet?", posterPhotoName: "advertising_sample")
         ] as [ProducesCardViewModel]
         
         let viewModels = producers.map({return $0.toCardViewModel()})
