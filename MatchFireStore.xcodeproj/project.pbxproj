@@ -16,6 +16,8 @@
 		C26F07B722869E9000375FE3 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F07B622869E9000375FE3 /* HomeBottomControlsStackView.swift */; };
 		C26F07B92286A59A00375FE3 /* TopNavagationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F07B82286A59A00375FE3 /* TopNavagationStackView.swift */; };
 		C26F07BB2289E2A800375FE3 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F07BA2289E2A800375FE3 /* CardView.swift */; };
+		C296D047229CE8100031462A /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D046229CE8100031462A /* RegistrationController.swift */; };
+		C296D049229CFCCE0031462A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C296D048229CFCCE0031462A /* CustomTextField.swift */; };
 		C2E7F9E7228FF3ED006A5B16 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7F9E6228FF3ED006A5B16 /* CardViewModel.swift */; };
 		C2E7F9E922926FB7006A5B16 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E7F9E822926FB7006A5B16 /* Advertiser.swift */; };
 		C2EAED70228FE26400BB4D44 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2EAED6F228FE26400BB4D44 /* User.swift */; };
@@ -33,6 +35,8 @@
 		C26F07B622869E9000375FE3 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		C26F07B82286A59A00375FE3 /* TopNavagationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavagationStackView.swift; sourceTree = "<group>"; };
 		C26F07BA2289E2A800375FE3 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		C296D046229CE8100031462A /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		C296D048229CFCCE0031462A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		C2E7F9E6228FF3ED006A5B16 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		C2E7F9E822926FB7006A5B16 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
 		C2EAED6F228FE26400BB4D44 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 				C26F07B622869E9000375FE3 /* HomeBottomControlsStackView.swift */,
 				C26F07B82286A59A00375FE3 /* TopNavagationStackView.swift */,
 				C26F07BA2289E2A800375FE3 /* CardView.swift */,
+				C296D048229CFCCE0031462A /* CustomTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				C26F07A2228692A400375FE3 /* HomeController.swift */,
+				C296D046229CE8100031462A /* RegistrationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C26F07B92286A59A00375FE3 /* TopNavagationStackView.swift in Sources */,
+				C296D049229CFCCE0031462A /* CustomTextField.swift in Sources */,
 				C26F07A3228692A400375FE3 /* HomeController.swift in Sources */,
 				C2E7F9E922926FB7006A5B16 /* Advertiser.swift in Sources */,
 				C26F07B722869E9000375FE3 /* HomeBottomControlsStackView.swift in Sources */,
@@ -204,6 +211,7 @@
 				C2E7F9E7228FF3ED006A5B16 /* CardViewModel.swift in Sources */,
 				C26F07BB2289E2A800375FE3 /* CardView.swift in Sources */,
 				C26F07B42286968F00375FE3 /* Extensions+UIView.swift in Sources */,
+				C296D047229CE8100031462A /* RegistrationController.swift in Sources */,
 				C2EAED70228FE26400BB4D44 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
