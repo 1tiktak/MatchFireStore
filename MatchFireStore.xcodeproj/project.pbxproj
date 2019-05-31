@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F1EE6FAABCB1D0C964AF72D /* Pods_MatchFireStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF930B53C95EFE382B7647 /* Pods_MatchFireStore.framework */; };
+		C2515AE722A0EE0A00EABB89 /* Bindible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2515AE622A0EE0A00EABB89 /* Bindible.swift */; };
 		C26F07A1228692A400375FE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F07A0228692A400375FE3 /* AppDelegate.swift */; };
 		C26F07A3228692A400375FE3 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F07A2228692A400375FE3 /* HomeController.swift */; };
 		C26F07A6228692A400375FE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C26F07A4228692A400375FE3 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		1ABC5C8E5F8F0FF7668DF2B0 /* Pods-MatchFireStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchFireStore.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MatchFireStore/Pods-MatchFireStore.debug.xcconfig"; sourceTree = "<group>"; };
 		3EEF930B53C95EFE382B7647 /* Pods_MatchFireStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MatchFireStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B04F903EF64919AF3F88E1B4 /* Pods-MatchFireStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchFireStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-MatchFireStore/Pods-MatchFireStore.release.xcconfig"; sourceTree = "<group>"; };
+		C2515AE622A0EE0A00EABB89 /* Bindible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindible.swift; sourceTree = "<group>"; };
 		C26F079D228692A400375FE3 /* MatchFireStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchFireStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26F07A0228692A400375FE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C26F07A2228692A400375FE3 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				C26F07A2228692A400375FE3 /* HomeController.swift */,
 				C296D046229CE8100031462A /* RegistrationController.swift */,
 				C296D04A229E392F0031462A /* RegistrationViewModel.swift */,
+				C2515AE622A0EE0A00EABB89 /* Bindible.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				C26F07BB2289E2A800375FE3 /* CardView.swift in Sources */,
 				C26F07B42286968F00375FE3 /* Extensions+UIView.swift in Sources */,
 				C296D047229CE8100031462A /* RegistrationController.swift in Sources */,
+				C2515AE722A0EE0A00EABB89 /* Bindible.swift in Sources */,
 				C2EAED70228FE26400BB4D44 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
