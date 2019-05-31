@@ -104,6 +104,8 @@ class RegistrationController: UIViewController {
         return button
     }()
     
+    let registerHUD = JGProgressHUD(style: .dark)
+    
     
     @objc fileprivate func handleRegister(){
         
@@ -111,6 +113,10 @@ class RegistrationController: UIViewController {
         print("Register our user in Firebase")
         guard let email = emailTextField.text else { return }
         guard let password = passwordTextField.text else { return }
+        
+        registerHUD.textLabel.text = "Register"
+        registerHUD.show(in: view)
+        
         
         Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
             
@@ -121,11 +127,35 @@ class RegistrationController: UIViewController {
             }
             
             print("Sucessfully signed up", res?.user.uid ?? "")
+            
+            // Only upload images once you are here.
+            
+            let filename = UUID().uuidString
+            let ref = Storage.storage().reference(withPath: "/images/\(filename)")
+            let imageData = self.registrationViewModel.bindableImage.value?.jpegData(compressionQuality: 0.75) ?? Data()
+            ref.putData(imageData, metadata: nil, completion: { (_, err) in
+                
+                if let err = err {
+                    self.showHUDWithError(error: err)
+                    return // bail
+                }
+                
+                print("Finished uploading photo to storage")
+                ref.downloadURL(completion: { (url, err) in
+                    if let err = err {
+                        self.showHUDWithError(error: err)
+                        return
+                    }
+                    
+                    self.registerHUD.dismiss()
+                    print("Download url", url?.absoluteString ?? "")
+                })
+            })
         }
     }
     
     fileprivate func showHUDWithError(error: Error){
-        
+        registerHUD.dismiss()
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Failed Registration"
         hud.detailTextLabel.text = error.localizedDescription
@@ -186,7 +216,7 @@ class RegistrationController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NotificationCenter.default.removeObserver(self) // you'll have a retain cycle
+//        NotificationCenter.default.removeObserver(self) // you'll have a retain cycle
     }
     
     @objc fileprivate func handleKeyboardHide() {
@@ -265,3 +295,4 @@ class RegistrationController: UIViewController {
         gradientLayer.frame = view.bounds
     }
 }
+
