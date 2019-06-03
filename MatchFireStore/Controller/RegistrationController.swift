@@ -105,65 +105,25 @@ class RegistrationController: UIViewController {
     }()
     
     let registerHUD = JGProgressHUD(style: .dark)
-    
-    
+
     @objc fileprivate func handleRegister(){
-        
         self.handleTapDismiss()
-        print("Register our user in Firebase")
-        guard let email = emailTextField.text else { return }
-        guard let password = passwordTextField.text else { return }
-        
-        registerHUD.textLabel.text = "Register"
-        registerHUD.show(in: view)
-        
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (res, err) in
-            
+        registrationViewModel.performRegistration { [weak self] (err) in
             if let err = err {
-                print(err)
-                self.showHUDWithError(error: err)
-                return
+                self?.showHUDWithError(error: err)
             }
-            
-            print("Sucessfully signed up", res?.user.uid ?? "")
-            
-            // Only upload images once you are here.
-            
-            let filename = UUID().uuidString
-            let ref = Storage.storage().reference(withPath: "/images/\(filename)")
-            let imageData = self.registrationViewModel.bindableImage.value?.jpegData(compressionQuality: 0.75) ?? Data()
-            ref.putData(imageData, metadata: nil, completion: { (_, err) in
-                
-                if let err = err {
-                    self.showHUDWithError(error: err)
-                    return // bail
-                }
-                
-                print("Finished uploading photo to storage")
-                ref.downloadURL(completion: { (url, err) in
-                    if let err = err {
-                        self.showHUDWithError(error: err)
-                        return
-                    }
-                    
-                    self.registerHUD.dismiss()
-                    print("Download url", url?.absoluteString ?? "")
-                })
-            })
+            print("finsihed registering user")
         }
     }
     
     fileprivate func showHUDWithError(error: Error){
         registerHUD.dismiss()
         let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Failed Registration"
+        hud.textLabel.text = "Roger we have problem"
         hud.detailTextLabel.text = error.localizedDescription
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 4)
     }
-    
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -188,17 +148,14 @@ class RegistrationController: UIViewController {
         }
         registrationViewModel.bindableImage.bind { [unowned self] (img) in self.selectPhotoButton.setImage(img?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
-        
-        //        registrationViewModel.isFormValidObserver = { [unowned self] (isFormValid) in
-        //            print("Form is changing, is it valid?", isFormValid)
-        //
-        //            self.registerButton.isEnabled = isFormValid
-        //            self.registerButton.backgroundColor = isFormValid ? #colorLiteral(red: 0.8235294118, green: 0, blue: 0.3254901961, alpha: 1) : .lightGray
-        //            self.registerButton.setTitleColor(isFormValid ? .white : .gray, for: .normal)
-        //        }
-        //        registrationViewModel.imageObserver = { [unowned self] img in
-        //            self.selectPhotoButton.setImage(img?.withRenderingMode(.alwaysOriginal), for: .normal)
-        //        }
+        registrationViewModel.bindableIsRegistering.bind { [unowned self] (isRegistering) in
+            if isRegistering == true {
+                self.registerHUD.textLabel.text = "Signing you up :)"
+                self.registerHUD.show(in: self.view)
+            } else {
+                self.registerHUD.dismiss()
+            }
+        }
     }
     
     fileprivate func setupTapGesture() {

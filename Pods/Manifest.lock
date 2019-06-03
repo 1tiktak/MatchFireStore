@@ -128,10 +128,10 @@ PODS:
   - SDWebImage/Core (4.4.6)
 
 DEPENDENCIES:
-  - Firebase/Auth (~> 5.10.0)
+  - Firebase/Auth
   - Firebase/Core
   - Firebase/Firestore (~> 5.10.0)
-  - Firebase/Storage (~> 5.10.0)
+  - Firebase/Storage
   - GoogleAppMeasurement (~> 5.2.0)
   - JGProgressHUD (~> 2.0.3)
   - SDWebImage (~> 4.4.2)
@@ -185,6 +185,6 @@ SPEC CHECKSUMS:
   Protobuf: 3f617b9a6e73605565086864c9bc26b2bf2dd5a3
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: a2c900eb5ec9254b586607fe04daaca4eec167d0
+PODFILE CHECKSUM: 9f3324446d9bd1a506b320c598a1868b9eff036a
 
 COCOAPODS: 1.5.3
