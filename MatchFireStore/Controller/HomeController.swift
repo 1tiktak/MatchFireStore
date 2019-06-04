@@ -14,24 +14,6 @@ class HomeController: UIViewController {
     let topStackView = TopNavagationStackView()
     let cardsDeckView = UIView()
     let bottomStackView = HomeBottomControlsStackView()
-
-    
-    
-//    let cardViewModels: [CardViewModel] = {
-//
-//        let producers = [
-//
-//            User(name: "Jane", age: 24, profession: "DJ", imageNames: ["jane1", "jane2", "jane3"]),
-//            User(name: "Kelly", age: 18, profession: "Intern", imageNames: ["kelly1", "kelly2", "kelly3"]),
-//            User(name: "Adriel", age: 24, profession: "Marketing", imageNames: ["lady5c", "lady6c", "lady7c"]),
-//
-//            Advertiser(title: "GrubHub", brandName: "Hungry Yet?", posterPhotoName: "advertising_sample")
-//        ] as [ProducesCardViewModel]
-//
-//        let viewModels = producers.map({return $0.toCardViewModel()})
-//        return viewModels
-//
-//}()
     
     var cardViewModels = [CardViewModel]()
     
@@ -41,12 +23,15 @@ class HomeController: UIViewController {
         topStackView.settingsBUtton.addTarget(self, action: #selector(handleSettings), for: .touchUpInside)
         
         setUpLayout()
-        setupDummyCards()
+        setupFireStoreUserCards()
         fetchUsersFromFirestore()
     }
     
     fileprivate func fetchUsersFromFirestore(){
-        Firestore.firestore().collection("Users").getDocuments { (snapshot, err) in
+        
+        let query = Firestore.firestore().collection("Users")
+//        let query = Firestore.firestore().collection("Users").whereField("friends", arrayContains: "Chris")
+        query.getDocuments { (snapshot, err) in
             if let err = err {
                 print("Failed to fetch users 😭", err)
                 return
@@ -58,7 +43,7 @@ class HomeController: UIViewController {
                 self.cardViewModels.append(user.toCardViewModel())
             })
             
-            self.setupDummyCards()
+            self.setupFireStoreUserCards()
         }
     }
     
@@ -71,7 +56,7 @@ class HomeController: UIViewController {
     
     // Setting up cards
     
-    fileprivate func setupDummyCards() {
+    fileprivate func setupFireStoreUserCards() {
         
         cardViewModels.forEach { (cardVM) in
             let cardView = CardView(frame: .zero)
