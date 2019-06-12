@@ -14,7 +14,6 @@ class CustomImagePickerController: UIImagePickerController {
     
     
 }
-
 class SettingsController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     lazy var image1Button = createButton(selector: #selector(handleSelectPhoto))
@@ -29,8 +28,6 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         imagePicker.imageButton = button
         present(imagePicker, animated: true)
     }
-    
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[.originalImage] as? UIImage
         // How do i set the image, to the button tapped
@@ -38,8 +35,6 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         imageButton?.setImage(selectedImage?.withRenderingMode(.alwaysOriginal), for: .normal)
         dismiss(animated: true)
     }
-    
-    
     func createButton(selector: Selector) -> UIButton {
         let button = UIButton(type: .system)
         button.setTitle("Select Photo", for: .normal)
@@ -60,11 +55,9 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         
     }
     
-    
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    lazy var header: UIView = {
+        
         let header = UIView()
-        
-        
         header.addSubview(image1Button)
         let padding: CGFloat = 16
         image1Button.anchor(top: header.topAnchor, leading: header.leadingAnchor, bottom: header.bottomAnchor, trailing: nil, padding: .init(top: padding, left: padding, bottom: padding, right: 0))
@@ -76,15 +69,42 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         stackView.distribution = .fillEqually
         stackView.spacing = padding
         
-        
         header.addSubview(stackView)
         stackView.anchor(top: header.topAnchor, leading: image1Button.trailingAnchor, bottom: header.bottomAnchor, trailing: header.trailingAnchor, padding: .init(top: padding, left: padding, bottom: padding, right: padding))
         
         return header
+    }()
+    
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 0 {
+            return header
+        }
+        let headerLabel = UILabel()
+        headerLabel.text = "Name"
+        return headerLabel
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 300
+        if section == 0 {
+            return 300
+        }
+        return 40
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 5
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+        cell.textLabel?.text = "TEST TEST TEST"
+        return cell
     }
     
     fileprivate func setupNavagationItems() {
@@ -96,7 +116,6 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
             UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleCancel))
         ]
     }
-    
     @objc fileprivate func handleCancel(){
         dismiss(animated: true)
     }
