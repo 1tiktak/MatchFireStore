@@ -52,6 +52,7 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
         setupNavagationItems()
         tableView.backgroundColor = UIColor(white: 0.95, alpha: 1)
         tableView.tableFooterView = UIView()
+        tableView.keyboardDismissMode = .interactive
         
     }
     
@@ -76,12 +77,30 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
     }()
     
     
+    class HeaderLabel: UILabel {
+        override func drawText(in rect: CGRect) {
+         super.drawText(in: rect.insetBy(dx: 16, dy: 0))
+        }
+    }
+    
+    
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             return header
         }
-        let headerLabel = UILabel()
-        headerLabel.text = "Name"
+        
+        
+        let headerLabel = HeaderLabel()
+        switch section {
+        case 1:
+            headerLabel.text = "Name"
+        case 2:
+            headerLabel.text = "Profession"
+        case 3:
+            headerLabel.text = "Age"
+        default:
+            headerLabel.text = "Bio"
+        }
         return headerLabel
     }
     
@@ -97,13 +116,22 @@ class SettingsController: UITableViewController, UIImagePickerControllerDelegate
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return section == 0 ? 0 : 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = "TEST TEST TEST"
+        let cell = SettingsCell(style: .default, reuseIdentifier: nil)
+        switch indexPath.section {
+        case 1:
+            cell.textField.placeholder = "Enter Couples Name"
+        case 2:
+            cell.textField.placeholder = "Enter Profession"
+        case 3:
+            cell.textField.placeholder = "Enter Age"
+        default:
+            cell.textField.placeholder = "Enter Bio"
+        }
         return cell
     }
     
