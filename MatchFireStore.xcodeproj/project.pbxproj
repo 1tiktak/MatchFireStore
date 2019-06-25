@@ -10,6 +10,7 @@
 		7F1EE6FAABCB1D0C964AF72D /* Pods_MatchFireStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EEF930B53C95EFE382B7647 /* Pods_MatchFireStore.framework */; };
 		96997B1E22B41F4C000067E5 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96997B1D22B41F4C000067E5 /* SettingsCell.swift */; };
 		C22738EB22AB91FD004BD0A9 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22738EA22AB91FD004BD0A9 /* SettingsController.swift */; };
+		C22B33D122BF396C005F55AC /* AgeRangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C22B33D022BF396C005F55AC /* AgeRangeCell.swift */; };
 		C2515AE722A0EE0A00EABB89 /* Bindible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2515AE622A0EE0A00EABB89 /* Bindible.swift */; };
 		C26F07A1228692A400375FE3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F07A0228692A400375FE3 /* AppDelegate.swift */; };
 		C26F07A3228692A400375FE3 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26F07A2228692A400375FE3 /* HomeController.swift */; };
@@ -35,6 +36,7 @@
 		96997B1D22B41F4C000067E5 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		B04F903EF64919AF3F88E1B4 /* Pods-MatchFireStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MatchFireStore.release.xcconfig"; path = "Pods/Target Support Files/Pods-MatchFireStore/Pods-MatchFireStore.release.xcconfig"; sourceTree = "<group>"; };
 		C22738EA22AB91FD004BD0A9 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		C22B33D022BF396C005F55AC /* AgeRangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRangeCell.swift; sourceTree = "<group>"; };
 		C2515AE622A0EE0A00EABB89 /* Bindible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindible.swift; sourceTree = "<group>"; };
 		C26F079D228692A400375FE3 /* MatchFireStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchFireStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C26F07A0228692A400375FE3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C26F07BA2289E2A800375FE3 /* CardView.swift */,
 				C296D048229CFCCE0031462A /* CustomTextField.swift */,
 				96997B1D22B41F4C000067E5 /* SettingsCell.swift */,
+				C22B33D022BF396C005F55AC /* AgeRangeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				C2E7F9E922926FB7006A5B16 /* Advertiser.swift in Sources */,
 				C26F07B722869E9000375FE3 /* HomeBottomControlsStackView.swift in Sources */,
 				C26F07A1228692A400375FE3 /* AppDelegate.swift in Sources */,
+				C22B33D122BF396C005F55AC /* AgeRangeCell.swift in Sources */,
 				C2E7F9E7228FF3ED006A5B16 /* CardViewModel.swift in Sources */,
 				C26F07BB2289E2A800375FE3 /* CardView.swift in Sources */,
 				C26F07B42286968F00375FE3 /* Extensions+UIView.swift in Sources */,
