@@ -29,12 +29,21 @@ class HomeController: UIViewController, SettingsControllerDelegate {
         
         setUpLayout()
         fetchCurrentUser()
-//        setupFireStoreUserCards()
-//        fetchUsersFromFirestore()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("HomeController Did Appear 🙋‍♂️")
+        // If user is not logged in Kick the user out to the sign/login VC
+        
+        if Auth.auth().currentUser == nil {
+            let registrationController = RegistrationController()
+            let navController = UINavigationController(rootViewController: registrationController)
+            present(navController, animated: true)
+        }
     }
     
     fileprivate var user: User?
-    
     
       fileprivate func fetchCurrentUser(){
         guard let uid =  Auth.auth().currentUser?.uid else { return }

@@ -224,6 +224,8 @@ class RegistrationController: UIViewController {
     }
     
     fileprivate func setupLayout() {
+        
+        navigationController?.isNavigationBarHidden = true
         view.addSubview(overallStackView)
         
         overallStackView.axis = .vertical
